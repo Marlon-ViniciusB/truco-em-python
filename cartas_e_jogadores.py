@@ -1,24 +1,37 @@
 # Criação das cartas e do Baralho
-valores = (4, 5, 6, 7, "Q", "J", "K", "A", 2, 3)
-naipes = ("Ouros", "Espadas", "Copas", "Paus")
 
-info_das_cartas = []
+class Carta:
+    def __init__(self, nome, valor, naipe):
+        self.nome = nome
+        self.valor = valor
+        self.naipe = naipe
 
-def criar_cartas():
 
-        for v in valores:
+class Baralho:
+
+    valores = (4, 5, 6, 7, "Q", "J", "K", "A", 2, 3)
+    naipes = ("Ouros", "Espadas", "Copas", "Paus")
+
+    def __init__(self):
+
+        self.cartas = []
+        self.criar_cartas()
+
+    def criar_cartas(self):
+
+        for v in self.valores:
 
             valor = v
 
-            for n in naipes:
+            for n in self.naipes:
 
                 naipe = n
                 if valor == "A":
-                     nome = f"Ás de {naipe}"
+                    nome = f"Ás de {naipe}"
                 
                 elif valor == "Q":
-                      nome = f"Rainha de {naipe}"  
-
+                    nome = f"Rainha de {naipe}"  
+                
                 elif valor == "J":
                     nome = f"Valete de {naipe}"
 
@@ -28,19 +41,11 @@ def criar_cartas():
                 else:
                     nome = f"{valor} de {naipe} "
 
-                info_das_cartas.append((nome, valor, naipe))
+                nova_carta = Carta(nome, valor, naipe)
+                self.cartas.append(nova_carta)
 
 
-class Carta:
-    def __init__(self, nome, valor, naipe):
-        self.nome = nome
-        self.valor = valor
-        self.naipe = naipe
+meu_baralho = Baralho()
 
-
-criar_cartas() 
-
-baralho = [Carta(nome, valor, naipe) for nome, valor, naipe in info_das_cartas]
-
-for Carta in baralho:
-    print(Carta.nome)
+#for carta in meu_baralho.cartas:
+#    print(carta.nome, carta.valor, carta.naipe)
